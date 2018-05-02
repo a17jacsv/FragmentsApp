@@ -37,7 +37,7 @@ implements MountainDetailsFragment.OnListFragmentInteractionListener {
     private static final String[] mountainLocations = {"Alps","Alps","Alaska"};
     private static final int[] mountainHeights ={4478,4808,6190};
 
-    protected ArrayList<MountainData> mountainlist = new ArrayList<>();
+    protected static final ArrayList<MountainData> mountainlist = new ArrayList<>();
     ListView myListView;
 
     @Override
@@ -62,7 +62,7 @@ implements MountainDetailsFragment.OnListFragmentInteractionListener {
 // Commit the transaction
         transaction.commit();
 
-        /*Brorsan getJson = new Brorsan();
+        Brorsan getJson = new Brorsan();
         getJson.execute();
 
         ListView myListView = (ListView) findViewById(R.id.list_view);
@@ -100,7 +100,7 @@ implements MountainDetailsFragment.OnListFragmentInteractionListener {
                 getApplicationContext().startActivity(intent);
 
             }
-        });*/
+        });
     }
 
     @Override

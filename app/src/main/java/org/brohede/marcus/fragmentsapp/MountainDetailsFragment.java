@@ -34,10 +34,6 @@ public class MountainDetailsFragment extends Fragment {
      * fragment (e.g. upon screen orientation changes).
      */
 
-
-
-
-
     public MountainDetailsFragment() {
     }
 
@@ -74,11 +70,10 @@ public class MountainDetailsFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyMountainDetailsRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyMountainDetailsRecyclerViewAdapter(MainActivity.mountainlist, mListener));
         }
         return view;
     }
-
 
     @Override
     public void onAttach(Context context) {
@@ -107,6 +102,7 @@ public class MountainDetailsFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
+
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(DummyItem item);

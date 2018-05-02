@@ -18,10 +18,10 @@ import java.util.List;
  */
 public class MyMountainDetailsRecyclerViewAdapter extends RecyclerView.Adapter<MyMountainDetailsRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<MountainData> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyMountainDetailsRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public MyMountainDetailsRecyclerViewAdapter(List<MountainData> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -35,9 +35,9 @@ public class MyMountainDetailsRecyclerViewAdapter extends RecyclerView.Adapter<M
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        //holder.mItem = mValues.get(position);
+        holder.mIdView.setText(mValues.get(position).toString());
+        holder.mContentView.setText(mValues.get(position).utmatare());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
