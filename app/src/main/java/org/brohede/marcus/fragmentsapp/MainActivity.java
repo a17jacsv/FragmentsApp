@@ -1,7 +1,10 @@
 package org.brohede.marcus.fragmentsapp;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import org.brohede.marcus.fragmentsapp.dummy.DummyContent;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,7 +30,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FragmentActivity
+implements MountainDetailsFragment.OnListFragmentInteractionListener {
+
     private static final String[] mountainNames = {"Matterhorn","Mont Blanc","Denali"};
     private static final String[] mountainLocations = {"Alps","Alps","Alaska"};
     private static final int[] mountainHeights ={4478,4808,6190};
@@ -35,11 +41,28 @@ public class MainActivity extends AppCompatActivity {
     ListView myListView;
 
     @Override
+    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Brorsan getJson = new Brorsan();
+        // Create new fragment and transaction
+        MountainDetailsFragment newFragment = new MountainDetailsFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+// Replace whatever is in the fragment_container view with this fragment,
+// and add the transaction to the back stack
+        transaction.replace(R.id.viewer, newFragment);
+        transaction.addToBackStack(null);
+
+// Commit the transaction
+        transaction.commit();
+
+        /*Brorsan getJson = new Brorsan();
         getJson.execute();
 
         ListView myListView = (ListView) findViewById(R.id.list_view);
@@ -77,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 getApplicationContext().startActivity(intent);
 
             }
-        });
+        });*/
     }
 
     @Override
@@ -135,8 +158,8 @@ public class MainActivity extends AppCompatActivity {
 
             ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), R.layout.list_item_textview, R.id.my_item_textview, mountainlist);
 
-            myListView = (ListView)findViewById(R.id.list_view);
-            myListView.setAdapter(adapter);
+            /*myListView = (ListView)findViewById(R.id.list_view);
+            myListView.setAdapter(adapter);*/
         }
 
         @Override

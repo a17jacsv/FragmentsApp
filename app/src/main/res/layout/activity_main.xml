@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.brohede.marcus.fragmentsapp.MainActivity">
+    tools:context="org.brohede.marcus.fragmentsapp.MainActivity"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
@@ -16,23 +17,16 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintLeft_creator="1" />
 
-    <ListView
-        android:id="@+id/list_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1" />
+    <!-- <fragment android:name="org.brohede.marcus.fragmentsapp.MountainDetailsFragment"
+        android:id="@+id/list"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" /> -->
 
-</android.support.constraint.ConstraintLayout>
+    <FrameLayout android:name="MountainView"
+        android:id="@+id/viewer"
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
