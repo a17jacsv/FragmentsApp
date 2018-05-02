@@ -41,7 +41,7 @@ implements MountainDetailsFragment.OnListFragmentInteractionListener {
     ListView myListView;
 
     @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+    public void onListFragmentInteraction(MountainData m) {
 
     }
 

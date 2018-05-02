@@ -60,7 +60,7 @@ public class MyMountainDetailsRecyclerViewAdapter extends RecyclerView.Adapter<M
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public MountainData mItem;
 
         public ViewHolder(View view) {
             super(view);
