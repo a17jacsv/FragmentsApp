@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDelegate;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,7 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.widget.Toolbar;
+
 
 import org.brohede.marcus.fragmentsapp.dummy.DummyContent;
 import org.json.JSONArray;
@@ -38,6 +40,7 @@ implements MountainDetailsFragment.OnListFragmentInteractionListener {
     private static final String[] mountainLocations = {"Alps","Alps","Alaska"};
     private static final int[] mountainHeights ={4478,4808,6190};
     protected MountainDetailsFragment listFragment;
+    private AppCompatDelegate delegate;
 
     protected static final List<MountainData> mountainlist = new ArrayList<>();
     ListView myListView;
@@ -52,23 +55,18 @@ implements MountainDetailsFragment.OnListFragmentInteractionListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
-        // Sets the Toolbar to act as the ActionBar for this Activity window.
-        // Make sure the toolbar exists in the activity and is not null
-
 
 
         // Create new fragment and transaction
         listFragment = new MountainDetailsFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-// Replace whatever is in the fragment_container view with this fragment,
-// and add the transaction to the back stack
+        // Replace whatever is in the fragment_container view with this fragment,
+        // and add the transaction to the back stack
         transaction.replace(R.id.viewer, listFragment);
         transaction.addToBackStack(null);
 
-// Commit the transaction
+        // Commit the transaction
         transaction.commit();
 
         Brorsan getJson = new Brorsan();
