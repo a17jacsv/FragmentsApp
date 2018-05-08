@@ -1,14 +1,11 @@
 package org.brohede.marcus.fragmentsapp;
 
-import android.app.Fragment;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatDelegate;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,7 +16,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
-import org.brohede.marcus.fragmentsapp.dummy.DummyContent;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,21 +30,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends FragmentActivity
-implements MountainDetailsFragment.OnListFragmentInteractionListener {
+implements MountainListFragment.OnListFragmentInteractionListener,MountainDetailsFragment.OnFragmentInteractionListener {
 
     private static final String[] mountainNames = {"Matterhorn","Mont Blanc","Denali"};
     private static final String[] mountainLocations = {"Alps","Alps","Alaska"};
     private static final int[] mountainHeights ={4478,4808,6190};
-    protected MountainDetailsFragment listFragment;
-    private AppCompatDelegate delegate;
+    protected MountainListFragment listFragment;
 
     protected static final List<MountainData> mountainlist = new ArrayList<>();
     ListView myListView;
 
     @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
     public void onListFragmentInteraction(MountainData m) {
         Toast.makeText(getApplicationContext(), m.utmatare(), Toast.LENGTH_SHORT).show();
 
+        MountainDetailsFragment detailsFragment = new MountainDetailsFragment();
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.viewer, detailsFragment);
+        transaction.addToBackStack(null);
+
+        // Commit the transaction
+        transaction.commit();
     }
 
     @Override
@@ -58,7 +67,8 @@ implements MountainDetailsFragment.OnListFragmentInteractionListener {
 
 
         // Create new fragment and transaction
-        listFragment = new MountainDetailsFragment();
+        listFragment = new MountainListFragment();
+
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         // Replace whatever is in the fragment_container view with this fragment,

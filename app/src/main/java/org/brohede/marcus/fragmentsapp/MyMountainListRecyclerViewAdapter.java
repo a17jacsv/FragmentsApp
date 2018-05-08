@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.brohede.marcus.fragmentsapp.MountainDetailsFragment.OnListFragmentInteractionListener;
+import org.brohede.marcus.fragmentsapp.MountainListFragment.OnListFragmentInteractionListener;
 import org.brohede.marcus.fragmentsapp.dummy.DummyContent.DummyItem;
 
 import java.util.List;
@@ -16,12 +16,12 @@ import java.util.List;
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MyMountainDetailsRecyclerViewAdapter extends RecyclerView.Adapter<MyMountainDetailsRecyclerViewAdapter.ViewHolder> {
+public class MyMountainListRecyclerViewAdapter extends RecyclerView.Adapter<MyMountainListRecyclerViewAdapter.ViewHolder> {
 
     private final List<MountainData> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyMountainDetailsRecyclerViewAdapter(List<MountainData> items, OnListFragmentInteractionListener listener) {
+    public MyMountainListRecyclerViewAdapter(List<MountainData> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -29,7 +29,7 @@ public class MyMountainDetailsRecyclerViewAdapter extends RecyclerView.Adapter<M
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_mountaindetails, parent, false);
+                .inflate(R.layout.fragment_mountain_list, parent, false);
         return new ViewHolder(view);
     }
 
