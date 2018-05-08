@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import org.brohede.marcus.fragmentsapp.dummy.DummyContent;
 import org.json.JSONArray;
@@ -36,12 +37,14 @@ implements MountainDetailsFragment.OnListFragmentInteractionListener {
     private static final String[] mountainNames = {"Matterhorn","Mont Blanc","Denali"};
     private static final String[] mountainLocations = {"Alps","Alps","Alaska"};
     private static final int[] mountainHeights ={4478,4808,6190};
+    protected MountainDetailsFragment listFragment;
 
-    protected static final ArrayList<MountainData> mountainlist = new ArrayList<>();
+    protected static final List<MountainData> mountainlist = new ArrayList<>();
     ListView myListView;
 
     @Override
     public void onListFragmentInteraction(MountainData m) {
+        Toast.makeText(getApplicationContext(), m.utmatare(), Toast.LENGTH_SHORT).show();
 
     }
 
@@ -49,14 +52,20 @@ implements MountainDetailsFragment.OnListFragmentInteractionListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        // Sets the Toolbar to act as the ActionBar for this Activity window.
+        // Make sure the toolbar exists in the activity and is not null
+
+
 
         // Create new fragment and transaction
-        MountainDetailsFragment newFragment = new MountainDetailsFragment();
+        listFragment = new MountainDetailsFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
 // Replace whatever is in the fragment_container view with this fragment,
 // and add the transaction to the back stack
-        transaction.replace(R.id.viewer, newFragment);
+        transaction.replace(R.id.viewer, listFragment);
         transaction.addToBackStack(null);
 
 // Commit the transaction
@@ -132,6 +141,8 @@ implements MountainDetailsFragment.OnListFragmentInteractionListener {
             super.onPostExecute(o);
             String s = new String(o.toString());
             Log.d("Jacob","DataFetched"+s);
+            
+            mountainlist.clear();
 
             try {
                 JSONArray mountaindata = new JSONArray(s);
@@ -148,8 +159,8 @@ implements MountainDetailsFragment.OnListFragmentInteractionListener {
                     String url = aux.getString("img");
                     MountainData m = new MountainData(name, height, location, url);
                     mountainlist.add(m);
-
                 }
+                listFragment.update (mountainlist);
             }
             catch (JSONException e) {
                 e.printStackTrace();

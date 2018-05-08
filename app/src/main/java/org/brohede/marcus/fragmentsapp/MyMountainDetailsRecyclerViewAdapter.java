@@ -35,7 +35,7 @@ public class MyMountainDetailsRecyclerViewAdapter extends RecyclerView.Adapter<M
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        //holder.mItem = mValues.get(position);
+        holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).toString());
         holder.mContentView.setText(mValues.get(position).utmatare());
 
