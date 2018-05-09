@@ -47,9 +47,15 @@ implements MountainListFragment.OnListFragmentInteractionListener,MountainDetail
 
     @Override
     public void onListFragmentInteraction(MountainData m) {
-        Toast.makeText(getApplicationContext(), m.utmatare(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), m.utmatare(), Toast.LENGTH_SHORT).show();
 
         MountainDetailsFragment detailsFragment = new MountainDetailsFragment();
+
+        Bundle args = new Bundle();
+        args.putString(MountainDetailsFragment.ARG_NAME, m.getName());
+        args.putString(MountainDetailsFragment.ARG_LOCATION, m.getLocation());
+        args.putInt(MountainDetailsFragment.ARG_HEIGHT, m.getHeight());
+        detailsFragment.setArguments(args);
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 

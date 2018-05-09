@@ -44,7 +44,7 @@ public class AdapterMountain extends ArrayAdapter {
         location.setText(currentMountain.getLocation());
 
         TextView height = listItem.findViewById(R.id.textView3);
-        height.setText(Integer.toString(currentMountain.getHeight()));
+        height.setText(currentMountain.getHeight());
 
         return listItem;
     }

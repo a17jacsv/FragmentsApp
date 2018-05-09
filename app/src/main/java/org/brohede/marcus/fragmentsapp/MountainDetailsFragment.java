@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 /**
@@ -20,12 +21,20 @@ import android.view.ViewGroup;
 public class MountainDetailsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    public static final String ARG_NAME = "mountain-name";
+    public static final String ARG_LOCATION = "mountain-location";
+    public static final String ARG_HEIGHT = "mountain-height";
+    public static final String ARG_URL = "mountain-url";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String mmountainname;
+    private String mmountainlocation;
+    private String mmountainheight;
+    private String mmountainurl;
+
+    private MountainData mmountain;
+
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -42,11 +51,14 @@ public class MountainDetailsFragment extends Fragment {
      * @return A new instance of fragment MountainDetailsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MountainDetailsFragment newInstance(String param1, String param2) {
+    public static MountainDetailsFragment newInstance(String param1, String param2, String param3, String param4) {
         MountainDetailsFragment fragment = new MountainDetailsFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_NAME, param1);
+        args.putString(ARG_LOCATION, param2);
+        args.putString(ARG_HEIGHT, param3);
+        args.putString(ARG_URL, param4);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -55,8 +67,12 @@ public class MountainDetailsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            //mmountainname = getArguments().getString(ARG_NAME);
+            //mmountainlocation = getArguments().getString(ARG_LOCATION);
+            //mmountainheight = getArguments().getInt(ARG_HEIGHT);
+            //mmountainurl = getArguments().getString(ARG_URL);
+
+            //MountainData mmountain = new MountainData(ARG_NAME, ARG_HEIGHT, ARG_LOCATION, ARG_URL);
         }
     }
 
@@ -64,7 +80,12 @@ public class MountainDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        //Toast.makeText(getActivity().getApplicationContext(), mmountain.utmatare(), Toast.LENGTH_SHORT).show();
+
         return inflater.inflate(R.layout.fragment_mountain_details, container, false);
+
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
