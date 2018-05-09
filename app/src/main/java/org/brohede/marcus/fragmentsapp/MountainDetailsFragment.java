@@ -72,7 +72,7 @@ public class MountainDetailsFragment extends Fragment {
             //mmountainheight = getArguments().getInt(ARG_HEIGHT);
             //mmountainurl = getArguments().getString(ARG_URL);
 
-            //MountainData mmountain = new MountainData(ARG_NAME, ARG_HEIGHT, ARG_LOCATION, ARG_URL);
+            mmountain = new MountainData(getArguments().getString(ARG_NAME), getArguments().getInt(ARG_HEIGHT),getArguments().getString(ARG_LOCATION)  ,getArguments().getString(ARG_URL));
         }
     }
 
@@ -81,7 +81,7 @@ public class MountainDetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        //Toast.makeText(getActivity().getApplicationContext(), mmountain.utmatare(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity().getApplicationContext(), mmountain.utmatare(), Toast.LENGTH_SHORT).show();
 
         return inflater.inflate(R.layout.fragment_mountain_details, container, false);
 
