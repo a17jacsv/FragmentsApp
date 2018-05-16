@@ -1,6 +1,7 @@
 package org.brohede.marcus.fragmentsapp;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
@@ -59,6 +60,7 @@ implements MountainListFragment.OnListFragmentInteractionListener,MountainDetail
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
+        
         transaction.replace(R.id.viewer, detailsFragment);
         transaction.addToBackStack(null);
 

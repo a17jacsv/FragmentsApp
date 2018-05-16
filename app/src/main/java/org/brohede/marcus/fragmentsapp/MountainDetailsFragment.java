@@ -7,7 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import static org.brohede.marcus.fragmentsapp.R.layout.fragment_mountain_details;
 
 
 /**
@@ -77,13 +80,23 @@ public class MountainDetailsFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
 
-        Toast.makeText(getActivity().getApplicationContext(), mmountain.utmatare(), Toast.LENGTH_SHORT).show();
+        View view = inflater.inflate(fragment_mountain_details, container, false);
 
-        return inflater.inflate(R.layout.fragment_mountain_details, container, false);
+        TextView names = (TextView)view.findViewById(R.id.textView2);
+        TextView locations = (TextView)view.findViewById(R.id.textView3);
+        TextView heights = (TextView)view.findViewById(R.id.textView4);
+
+        names.setText(mmountain.getName());
+        locations.setText(mmountain.getLocation());
+        heights.setText(Integer.toString(mmountain.getHeight()));
+
+        //Toast.makeText(getActivity().getApplicationContext(), mmountain.utmatare(), Toast.LENGTH_SHORT).show();
+
+        return view;
 
 
     }
