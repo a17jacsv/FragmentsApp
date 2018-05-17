@@ -60,9 +60,13 @@ implements MountainListFragment.OnListFragmentInteractionListener,MountainDetail
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        
-        transaction.replace(R.id.viewer, detailsFragment);
-        transaction.addToBackStack(null);
+
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            transaction.replace(R.id.detailsFragmentContainer, detailsFragment);
+        } else {
+            transaction.replace(R.id.viewer, detailsFragment);
+            transaction.addToBackStack(null);
+        }
 
         // Commit the transaction
         transaction.commit();
